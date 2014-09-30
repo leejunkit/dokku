@@ -79,7 +79,7 @@ server {
   location    / {
 
     # Ignore the NewRelic pinger agent so we don't flood the logs
-    if ($http_user_agent ~ (NewRelicPinger) ) {
+    if ($http_user_agent ~* "NewRelicPinger") {
       access_log off;
     }
     
