@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
+
 APP="$1"; PORT="$2"
 WILDCARD_SSL="$DOKKU_ROOT/tls"
 SSL="$DOKKU_ROOT/$APP/tls"
@@ -23,10 +24,6 @@ EOF
   elif  [[ -e "$WILDCARD_SSL/server.crt" ]] && [[ -e "$WILDCARD_SSL/server.key" ]] && [[ $hostname = `openssl x509 -in $WILDCARD_SSL/server.crt -noout -subject | tr '/' '\n' | grep CN= | cut -c4-` ]]; then
     SSL_INUSE="$WILDCARD_SSL"
     SSL_DIRECTIVES=""
-  fi
-
-  if [[ -f "$DOKKU_ROOT/$APP/CNAME" ]]; then
-    hostname=$(< "$DOKKU_ROOT/$APP/CNAME" )
   fi
 
   # ssl based nginx.conf
@@ -60,6 +57,7 @@ $SSL_DIRECTIVES
     proxy_set_header X-Forwarded-Port \$server_port;
     proxy_set_header X-Request-Start \$msec;
   }
+  include $DOKKU_ROOT/$APP/nginx.conf.d/*.conf;
 }
 EOF
 
@@ -93,6 +91,7 @@ server {
     proxy_set_header X-Forwarded-Port \$server_port;
     proxy_set_header X-Request-Start \$msec;
   }
+  include $DOKKU_ROOT/$APP/nginx.conf.d/*.conf;
 }
 EOF
 
