@@ -1,5 +1,44 @@
 # History
 
+## 0.3.7
+
+- #788 @mmerickel fix apps plugin issues in 0.3.6
+- #789 @mmerickel do not output message when creating ENV file
+
+## 0.3.6
+
+- #782: @josegonzalez Simplified config checking
+- #785: @lsde fix missing semicolon in nginx config
+
+## 0.3.5
+
+- #784: @josegonzalez Fix NO_VHOST check
+
+## 0.3.4
+
+- #780: @josegonzalez Output error message when a command is not found. Closes #778
+- #781: @michaelhobbs use DOKKU_IMAGE (i.e. progrium/buildstep)
+
+## 0.3.3
+
+- #659: @Xe contrib: add dokku client shell script
+- #669 @ohardy Handle dokku plugins-update command
+- #722: @wrboyce Add `git pull` support with git-pre-pull and git-post-pull hooks
+- #751: @tboerger Partial openSUSE support
+- #776: @joliv Update man page for new commands
+- #777: @tboerger Use PLUGINS_PATH env var and persist environment when running dokku with sudo
+- #779: @josegonzalez Minor bash formatting changes
+
+## 0.3.2
+
+- #675: @michaelhobbs port wait-to-retire from broadly/dokku
+- #765: @josegonzalez Ignore tls directory when listing apps
+- #766: @josegonzalez Sort output of apps command
+- #771: @josegonzalez Doc updates
+- #518 #772: @nickl- Import ssl certificates
+- #773: @alex-sherwin Support a way to not create nginx vhost
+- #774: @josegonzalez Add the ability to customize an app's hostname using nginx-hostname pluginhook
+
 ## 0.3.1
 
 - 647b2157: @josegonzalez Update HISTORY.md for 0.3.0

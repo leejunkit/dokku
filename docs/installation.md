@@ -11,7 +11,7 @@ Ubuntu 14.04 x64 x64. Ideally have a domain ready to point to your host. It's de
 To install the latest stable version of dokku, you can run the following bootstrapper command:
 
 ```bash
-wget -qO- https://raw.github.com/progrium/dokku/v0.3.1/bootstrap.sh | sudo DOKKU_TAG=v0.3.1 bash
+wget -qO- https://raw.github.com/progrium/dokku/v0.3.7/bootstrap.sh | sudo DOKKU_TAG=v0.3.7 bash
 ```
 
 ## Configuring
@@ -20,7 +20,7 @@ Set up a domain and a wildcard domain pointing to that host. Make sure `/home/do
 
 You'll have to add a public key associated with a username by doing something like this from your local machine:
 
-    $ cat ~/.ssh/id_rsa.pub | ssh progriumapp.com "sudo sshcommand acl-add dokku progrium"
+    $ cat ~/.ssh/id_rsa.pub | ssh dokku.me "sudo sshcommand acl-add dokku $USER"
 
 That's it!
 
@@ -110,6 +110,7 @@ sudo BUILD_STACK=true make install
     # - `BOX_MEMORY`
     # - `DOKKU_DOMAIN`
     # - `DOKKU_IP`.
+    cd path/to/dokku
     vagrant up
     ```
 
